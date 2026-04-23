@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLCMEX14 — Minecraft Thumbnail Commissions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ECEAF4;
+            --glass: rgba(255,255,255,0.28);
+            --glass-border: rgba(255,255,255,0.65);
+            --neu-light: rgba(255,255,255,0.88);
+            --neu-shadow: rgba(155,150,190,0.4);
+            --text: #2A2845;
+            --text-muted: #7A78A2;
+            --clown-red: #FF3B30;
+            --clown-yellow: #FFD60A;
+            --clown-blue: #30A8FF;
+            --clown-green: #32D74B;
+            --clown-purple: #BF5AF2;
+            --clown-orange: #FF9F0A;
+            --radius: 24px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ── BG ORBS ── */
+        .bg-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.16;
+            animation: drift linear infinite;
+        }
+        .orb-1 { width: 420px; height: 420px; background: var(--clown-red);    top: -80px;  left: -120px; animation-duration: 26s; }
+        .orb-2 { width: 360px; height: 360px; background: var(--clown-yellow); top: 15%;    right: -90px; animation-duration: 31s; animation-delay: -9s; }
+        .orb-3 { width: 300px; height: 300px; background: var(--clown-blue);   bottom: 22%; left: 4%;    animation-duration: 21s; animation-delay: -5s; }
+        .orb-4 { width: 260px; height: 260px; background: var(--clown-purple); bottom: -60px; right: 18%; animation-duration: 36s; animation-delay: -15s; }
+        .orb-5 { width: 220px; height: 220px; background: var(--clown-green);  top: 48%;    left: 38%;   animation-duration: 29s; animation-delay: -11s; }
+        .orb-6 { width: 180px; height: 180px; background: var(--clown-orange); top: 70%;    right: 35%;  animation-duration: 24s; animation-delay: -7s; }
+
+        @keyframes drift {
+            0%   { transform: translateY(0)    translateX(0)    scale(1); }
+            25%  { transform: translateY(-28px) translateX(18px) scale(1.04); }
+            50%  { transform: translateY(-12px) translateX(-14px) scale(0.97); }
+            75%  { transform: translateY(22px)  translateX(8px)  scale(1.02); }
+            100% { transform: translateY(0)    translateX(0)    scale(1); }
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 28px;
+            position: relative;
+            z-index: 1;
+        }
+        section { padding: 100px 0; position: relative; z-index: 1; }
+
+        .section-label {
+            font-family: 'Fredoka One', cursive;
+            font-size: 12px;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2rem, 4vw, 2.9rem);
+            color: var(--text);
+            margin-bottom: 14px;
+            line-height: 1.15;
+        }
+        .section-sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 520px;
+            line-height: 1.75;
+            margin-bottom: 56px;
+        }
+
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: calc(100% - 48px);
+            max-width: 1060px;
+        }
+        .nav-inner {
+            background: rgba(255,255,255,0.38);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1.5px solid rgba(255,255,255,0.72);
+            border-radius: 60px;
+            padding: 13px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 8px 8px 20px var(--neu-shadow), -6px -6px 14px var(--neu-light);
+        }
+        .nav-logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.25rem;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .nav-links { display: flex; gap: 26px; list-style: none; }
+        .nav-links a {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--clown-red), var(--clown-orange)) !important;
+            color: white !important;
+            padding: 8px 22px !important;
+            border-radius: 60px;
+            font-weight: 800 !important;
+            box-shadow: 0 4px 16px rgba(255,59,48,.32);
+            transition: transform .2s, box-shadow .2s !important;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 7px 22px rgba(255,59,48,.42) !important; }
+
+        /* ── HERO ── */
+        #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,59,48,.11);
+            border: 1px solid rgba(255,59,48,.3);
+            border-radius: 60px;
+            padding: 6px 16px;
+            font-size: .8rem;
+            font-weight: 700;
+            color: #cc2020;
+            margin-bottom: 22px;
+        }
+        .badge-dot {
+            width: 8px; height: 8px;
+            background: var(--clown-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--clown-green);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%,100% { opacity:1; transform:scale(1); }
+            50%  { opacity:.5; transform:scale(.75); }
+        }
+        .hero-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+            line-height: 1.08;
+            margin-bottom: 20px;
+        }
+        .hero-title .accent {
+            background: linear-gradient(135deg, var(--clown-red), var(--clown-orange), var(--clown-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.08rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 36px;
+            max-width: 460px;
+        }
+        .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--clown-red), var(--clown-orange));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: .98rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 22px rgba(255,59,48,.35);
+            transition: transform .2s, box-shadow .2s;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(255,59,48,.45); }
+        .btn-secondary {
+            background: var(--bg);
+            color: var(--text);
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: .98rem;
+            text-decoration: none;
+            box-shadow: 6px 6px 14px var(--neu-shadow), -6px -6px 14px var(--neu-light);
+            transition: transform .2s;
+        }
+        .btn-secondary:hover { transform: translateY(-2px); }
+        .hero-stats { display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+        .stat-pill {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 60px;
+            padding: 9px 18px;
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        /* Hero right card */
+        .hero-card-wrap { animation: fadeInUp .7s .3s ease both; }
+        .hero-card {
+            background: var(--glass);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: 14px 14px 30px var(--neu-shadow), -6px -6px 14px var(--neu-light), 0 0 60px rgba(255,59,48,.07);
+        }
+        .hero-thumb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .mini-thumb {
+            border-radius: 14px;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            box-shadow: 4px 4px 10px var(--neu-shadow), -2px -2px 6px var(--neu-light);
+        }
+        .mini-thumb-bg {
+            width: 100%; height: 100%;
+            display: flex; align-items: flex-end;
+            padding: 8px;
+        }
+        .mini-thumb-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: .68rem;
+            color: white;
+            text-shadow: 0 1px 5px rgba(0,0,0,.7);
+            line-height: 1.2;
+        }
+        .th-a { background: linear-gradient(135deg,#1a1a2e,#16213e,#0f3460,#533483); }
+        .th-b { background: linear-gradient(135deg,#0d0d0d,#1a0505,#3d0000,#800000); }
+        .th-c { background: linear-gradient(135deg,#0a0a0a,#0d2137,#1565C0,#42A5F5); }
+        .th-d { background: linear-gradient(135deg,#1a1200,#3d2b00,#806000,#FFB300); }
+        .hero-card-footer {
+            margin-top: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .quality-badge { font-size: .78rem; font-weight: 700; color: var(--text-muted); }
+        .stars { color: var(--clown-yellow); font-size: .95rem; letter-spacing: 2px; }
+
+        /* ── GALLERY ── */
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+        .thumb-featured { grid-column: span 2; }
+        .thumb-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 8px 8px 20px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+            transition: transform .3s, box-shadow .3s;
+            cursor: pointer;
+        }
+        .thumb-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 12px 18px 32px var(--neu-shadow), -4px -4px 10px var(--neu-light), 0 0 30px rgba(255,160,10,.14);
+        }
+        .thumb-img {
+            aspect-ratio: 16/9;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding: 18px;
+            position: relative;
+        }
+        .thumb-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,.62) 0%, transparent 55%);
+        }
+        .thumb-title-overlay {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.05rem;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,.5);
+            position: relative;
+            z-index: 1;
+            line-height: 1.2;
+        }
+        .thumb-featured .thumb-img { min-height: 280px; }
+        .thumb-featured .thumb-title-overlay { font-size: 1.5rem; }
+        .thumb-meta {
+            padding: 13px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .thumb-tag {
+            font-size: .74rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 60px;
+            background: rgba(255,255,255,.5);
+            color: var(--text-muted);
+        }
+        .thumb-like { font-size: .78rem; font-weight: 700; color: var(--clown-red); }
+        .g1 { background: linear-gradient(135deg,#0d0d1a,#1a0a2e,#2d0057,#5500aa); }
+        .g2 { background: linear-gradient(135deg,#001a00,#003300,#006600,#00aa44); }
+        .g3 { background: linear-gradient(135deg,#1a0500,#3d0f00,#8b2500,#e05000); }
+        .g4 { background: linear-gradient(135deg,#00051a,#000d3d,#001a8b,#0050e0); }
+        .placeholder-note {
+            text-align: center;
+            margin-top: 22px;
+            font-size: .84rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* ── PROCESS ── */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 38px;
+            left: 12%;
+            right: 12%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--clown-red), var(--clown-orange), var(--clown-yellow), var(--clown-green));
+            opacity: .28;
+            border-radius: 2px;
+        }
+        .step-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 8px 8px 20px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+            transition: transform .3s;
+        }
+        .step-card:hover { transform: translateY(-4px); }
+        .step-number {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin: 0 auto 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .step-card:nth-child(1) .step-number { box-shadow: 5px 5px 12px var(--neu-shadow), -5px -5px 12px var(--neu-light), 0 0 20px rgba(255,59,48,.22); }
+        .step-card:nth-child(2) .step-number { box-shadow: 5px 5px 12px var(--neu-shadow), -5px -5px 12px var(--neu-light), 0 0 20px rgba(255,159,10,.22); }
+        .step-card:nth-child(3) .step-number { box-shadow: 5px 5px 12px var(--neu-shadow), -5px -5px 12px var(--neu-light), 0 0 20px rgba(255,214,10,.22); }
+        .step-card:nth-child(4) .step-number { box-shadow: 5px 5px 12px var(--neu-shadow), -5px -5px 12px var(--neu-light), 0 0 20px rgba(50,215,75,.22); }
+        .step-title { font-family: 'Fredoka One', cursive; font-size: 1.08rem; color: var(--text); margin-bottom: 8px; }
+        .step-desc { font-size: .84rem; color: var(--text-muted); line-height: 1.65; }
+
+        /* ── PRICING ── */
+        .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-bottom: 32px; }
+        .price-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px 24px;
+            box-shadow: 8px 8px 20px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+            transition: transform .3s;
+            position: relative;
+        }
+        .price-card:hover { transform: translateY(-6px); }
+        .price-card.featured {
+            border-color: rgba(255,159,10,.45);
+            box-shadow: 8px 8px 20px var(--neu-shadow), -4px -4px 10px var(--neu-light), 0 0 40px rgba(255,159,10,.14);
+        }
+        .recommended-badge {
+            position: absolute;
+            top: -14px; left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--clown-orange), var(--clown-yellow));
+            color: white;
+            font-size: .74rem;
+            font-weight: 800;
+            padding: 5px 18px;
+            border-radius: 60px;
+            white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(255,159,10,.38);
+        }
+        .price-tier-emoji { font-size: 2.2rem; margin-bottom: 10px; display: block; }
+        .price-tier-name { font-family: 'Fredoka One', cursive; font-size: 1.3rem; color: var(--text); margin-bottom: 6px; }
+        .price-amount { font-family: 'Fredoka One', cursive; font-size: 2.9rem; color: var(--text); line-height: 1; margin-bottom: 4px; }
+        .price-amount span { font-size: 1.1rem; color: var(--text-muted); font-family: 'Nunito', sans-serif; font-weight: 700; }
+        .price-range { font-size: .78rem; color: var(--text-muted); margin-bottom: 22px; }
+        .price-features { list-style: none; margin-bottom: 26px; }
+        .price-features li {
+            font-size: .88rem;
+            color: var(--text-muted);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .price-cta {
+            display: block; text-align: center;
+            padding: 12px; border-radius: 60px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800; font-size: .92rem;
+            text-decoration: none;
+            transition: transform .2s, box-shadow .2s;
+            border: none; cursor: pointer; width: 100%;
+        }
+        .price-cta-outline { background: var(--bg); color: var(--text); box-shadow: 5px 5px 12px var(--neu-shadow), -5px -5px 12px var(--neu-light); }
+        .price-cta-filled { background: linear-gradient(135deg, var(--clown-orange), var(--clown-yellow)); color: white; box-shadow: 0 4px 16px rgba(255,159,10,.35); }
+        .price-cta:hover { transform: translateY(-2px); }
+
+        /* Add-ons */
+        .addons-section {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 8px 8px 20px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+        }
+        .addons-title { font-family: 'Fredoka One', cursive; font-size: 1.35rem; color: var(--text); margin-bottom: 22px; }
+        .addons-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+        .addon-item {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 18px 14px;
+            text-align: center;
+            box-shadow: 4px 4px 10px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+        }
+        .addon-emoji { font-size: 1.45rem; margin-bottom: 7px; display: block; }
+        .addon-name { font-size: .8rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+        .addon-price { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: var(--clown-orange); }
+        .refund-notice {
+            margin-top: 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(50,215,75,.09);
+            border: 1px solid rgba(50,215,75,.24);
+            border-radius: 14px;
+            padding: 14px 20px;
+            font-size: .87rem;
+            color: #1a8c33;
+            font-weight: 700;
+        }
+        .refund-notice .ri { font-size: 1.3rem; flex-shrink: 0; }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+        .testi-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 8px 8px 20px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+        }
+        .testi-stars { color: var(--clown-yellow); font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+        .testi-quote { font-size: .9rem; color: var(--text); line-height: 1.72; margin-bottom: 20px; font-style: italic; }
+        .testi-author { display: flex; align-items: center; gap: 12px; }
+        .testi-avatar {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: var(--bg);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 4px 4px 10px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+            flex-shrink: 0;
+        }
+        .testi-name { font-weight: 800; font-size: .88rem; color: var(--text); }
+        .testi-handle { font-size: .76rem; color: var(--text-muted); }
+
+        /* ── ABOUT ── */
+        .about-inner { display: grid; grid-template-columns: 1fr 1.55fr; gap: 60px; align-items: center; }
+        .about-card {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 42px 32px;
+            text-align: center;
+            box-shadow: 12px 12px 28px var(--neu-shadow), -6px -6px 14px var(--neu-light);
+        }
+        .about-avatar {
+            width: 118px; height: 118px;
+            border-radius: 50%;
+            background: var(--bg);
+            box-shadow: 8px 8px 20px var(--neu-shadow), -8px -8px 20px var(--neu-light);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3.4rem;
+            margin: 0 auto 20px;
+        }
+        .about-name { font-family: 'Fredoka One', cursive; font-size: 1.75rem; color: var(--text); margin-bottom: 5px; }
+        .about-role { font-size: .88rem; color: var(--text-muted); font-weight: 700; margin-bottom: 22px; }
+        .about-socials { display: flex; justify-content: center; gap: 10px; }
+        .social-btn {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 9px 15px;
+            font-size: .78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-decoration: none;
+            box-shadow: 4px 4px 10px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+            transition: transform .2s;
+        }
+        .social-btn:hover { transform: translateY(-2px); }
+        .about-text h3 { font-family: 'Fredoka One', cursive; font-size: 2rem; color: var(--text); margin-bottom: 14px; line-height: 1.2; }
+        .about-text p { font-size: .98rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; }
+        .about-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+        .about-tag {
+            background: var(--glass);
+            backdrop-filter: blur(8px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 60px;
+            padding: 5px 15px;
+            font-size: .8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        /* ── FAQ ── */
+        .faq-grid { max-width: 780px; margin: 0 auto; }
+        .faq-item {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 6px 6px 16px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+        }
+        .faq-question {
+            width: 100%;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 24px;
+            background: none; border: none; cursor: pointer; text-align: left;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800; font-size: .93rem; color: var(--text);
+        }
+        .faq-chevron { font-size: 1.1rem; transition: transform .3s; color: var(--text-muted); flex-shrink: 0; }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; }
+        .faq-answer-inner { padding: 0 24px 20px; font-size: .88rem; color: var(--text-muted); line-height: 1.72; }
+
+        /* ── CONTACT ── */
+        .contact-inner { display: grid; grid-template-columns: 1fr 1.85fr; gap: 50px; align-items: start; }
+        .contact-info h3 { font-family: 'Fredoka One', cursive; font-size: 1.55rem; color: var(--text); margin-bottom: 12px; }
+        .contact-info p { font-size: .9rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 26px; }
+        .contact-details { display: flex; flex-direction: column; gap: 12px; }
+        .contact-detail { display: flex; align-items: center; gap: 12px; font-size: .86rem; font-weight: 700; color: var(--text-muted); }
+        .contact-detail-icon {
+            width: 38px; height: 38px;
+            background: var(--bg);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem;
+            box-shadow: 4px 4px 10px var(--neu-shadow), -4px -4px 10px var(--neu-light);
+            flex-shrink: 0;
+        }
+        .commission-form {
+            background: var(--glass);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 12px 12px 28px var(--neu-shadow), -6px -6px 14px var(--neu-light);
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-group { margin-bottom: 17px; }
+        .form-group label { display: block; font-size: .8rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+        .form-input {
+            width: 100%;
+            background: var(--bg);
+            border: none; border-radius: 14px;
+            padding: 13px 17px;
+            font-family: 'Nunito', sans-serif;
+            font-size: .88rem; color: var(--text);
+            box-shadow: inset 4px 4px 10px var(--neu-shadow), inset -4px -4px 10px var(--neu-light);
+            outline: none; transition: box-shadow .2s;
+        }
+        .form-input:focus { box-shadow: inset 4px 4px 10px var(--neu-shadow), inset -4px -4px 10px var(--neu-light), 0 0 0 2px rgba(255,159,10,.3); }
+        .form-input::placeholder { color: var(--text-muted); }
+        textarea.form-input { resize: vertical; min-height: 108px; }
+        select.form-input { appearance: none; cursor: pointer; }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--clown-red), var(--clown-orange));
+            color: white; border: none; border-radius: 60px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.08rem; cursor: pointer;
+            box-shadow: 0 6px 22px rgba(255,59,48,.34);
+            transition: transform .2s, box-shadow .2s;
+            margin-top: 6px;
+        }
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(255,59,48,.44); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border-top: 1.5px solid var(--glass-border);
+            padding: 34px 0;
+            text-align: center;
+            position: relative; z-index: 1;
+        }
+        .footer-logo { font-family: 'Fredoka One', cursive; font-size: 1.35rem; color: var(--text); margin-bottom: 8px; }
+        .footer-sub { font-size: .8rem; color: var(--text-muted); }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-content > * { animation: fadeInUp .6s ease both; }
+        .hero-content > *:nth-child(1) { animation-delay: .1s; }
+        .hero-content > *:nth-child(2) { animation-delay: .2s; }
+        .hero-content > *:nth-child(3) { animation-delay: .3s; }
+        .hero-content > *:nth-child(4) { animation-delay: .4s; }
+        .hero-content > *:nth-child(5) { animation-delay: .5s; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
+            .hero-card-wrap { display: none; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .addons-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-grid, .gallery-grid .thumb-featured { grid-column: span 1; grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .process-steps::before { display: none; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BG ORBS -->
+<div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+    <div class="orb orb-6"></div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="nav-inner">
+        <a href="#hero" class="nav-logo">🤡 SLCMEX14</a>
+        <ul class="nav-links">
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact" class="nav-cta">Commission Me</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <div class="badge-dot" style="background:#FF3B30;box-shadow:0 0 8px #FF3B30;"></div>
+                    Slots Currently Closed
+                </div>
+                <h1 class="hero-title">
+                    Thumbnails That<br>
+                    <span class="accent">Get The Click</span>
+                </h1>
+                <p class="hero-sub">
+                    High-quality Minecraft thumbnails at prices that don't hurt your wallet.
+                    Fast, professional, and built on trust. 🎨
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-primary">Commission Me 🤡</a>
+                    <a href="#gallery" class="btn-secondary">See My Work</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-pill">⚡ Avg. 48hr Delivery</div>
+                    <div class="stat-pill">💰 Starting at $4</div>
+                    <div class="stat-pill">🛡️ 50% Refund Policy</div>
+                </div>
+            </div>
+            <div class="hero-card-wrap">
+                <div class="hero-card">
+                    <div class="hero-thumb-grid">
+                        <div class="mini-thumb">
+                            <div class="mini-thumb-bg th-a">
+                                <span class="mini-thumb-title">100 Days Hardcore ⚔️</span>
+                            </div>
+                        </div>
+                        <div class="mini-thumb">
+                            <div class="mini-thumb-bg th-b">
+                                <span class="mini-thumb-title">INSANE Castle Build 🏰</span>
+                            </div>
+                        </div>
+                        <div class="mini-thumb">
+                            <div class="mini-thumb-bg th-c">
+                                <span class="mini-thumb-title">Speed Run Attempt</span>
+                            </div>
+                        </div>
+                        <div class="mini-thumb">
+                            <div class="mini-thumb-bg th-d">
+                                <span class="mini-thumb-title">Gold Farm Tutorial 💎</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-card-footer">
+                        <span class="quality-badge">Premium Quality</span>
+                        <span class="stars">★★★★★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section id="gallery">
+    <div class="container">
+        <p class="section-label">Portfolio</p>
+        <h2 class="section-title">My Best Work 🎨</h2>
+        <p class="section-sub">Hand-picked thumbnails from my portfolio. Each one crafted to maximize clicks and represent the video's energy perfectly.</p>
+        <div class="gallery-grid">
+            <div class="thumb-card thumb-featured">
+                <div class="thumb-img" style="background:#000;padding:0;">
+                    <img src="https://i.ibb.co/h11tKJt8/Minecraft-s-Deadliest-Hunters-Tried-Killing-Me-v5.jpg" alt="Minecraft's Deadliest Hunters Tried Killing Me" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
+                <div class="thumb-meta">
+                    <span class="thumb-tag">Hunting / PvP</span>
+                    <span class="thumb-like">♥ Client Favorite</span>
+                </div>
+            </div>
+            <div class="thumb-card">
+                <div class="thumb-img" style="background:#000;padding:0;">
+                    <img src="https://i.ibb.co/WWcpLMWh/I-Got-Hunted-By-Minecraft-s-Most-Mysterious-Hunter.jpg" alt="I Got Hunted By Minecraft's Most Mysterious Hunter" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
+                <div class="thumb-meta">
+                    <span class="thumb-tag">Mystery / Hunting</span>
+                    <span class="thumb-like">♥ Popular</span>
+                </div>
+            </div>
+            <div class="thumb-card">
+                <div class="thumb-img" style="background:#000;padding:0;">
+                    <img src="https://i.ibb.co/sdhHRyGX/The-Strangest-Player-Ever-Found-Me-version-2.jpg" alt="The Strangest Player Ever Found Me" style="width:100%;height:100%;object-fit:cover;display:block;">
+                </div>
+                <div class="thumb-meta">
+                    <span class="thumb-tag">Mystery / SMP</span>
+                    <span class="thumb-like">♥ Trending</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section id="process">
+    <div class="container">
+        <p class="section-label">How It Works</p>
+        <h2 class="section-title">Simple as That ✨</h2>
+        <p class="section-sub">Getting a commission from me is stress-free. Here's what to expect from start to finish.</p>
+        <div class="process-steps">
+            <div class="step-card">
+                <div class="step-number">📋</div>
+                <div class="step-title">Fill the Form</div>
+                <p class="step-desc">Tell me your channel, video idea, vibe, and which tier you want. More detail = better result!</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">💬</div>
+                <div class="step-title">We Discuss</div>
+                <p class="step-desc">I'll reach out to confirm details, grab your skin file, and make sure we're fully aligned.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">🎨</div>
+                <div class="step-title">I Create</div>
+                <p class="step-desc">I get to work. You'll receive a draft within your agreed timeframe ready for feedback.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">🚀</div>
+                <div class="step-title">Final Delivery</div>
+                <p class="step-desc">After revisions, I send the final file in full resolution, ready to upload and go viral.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section id="pricing">
+    <div class="container">
+        <p class="section-label">Commissions</p>
+        <h2 class="section-title">Affordable Pricing 💰</h2>
+        <p class="section-sub">No crazy fees. Quality thumbnails that won't break the bank — because every creator deserves to look professional.</p>
+        <div class="pricing-grid">
+            <!-- Basic -->
+            <div class="price-card">
+                <span class="price-tier-emoji">🎈</span>
+                <div class="price-tier-name">Basic</div>
+                <div class="price-amount">$4 <span>– $5</span></div>
+                <div class="price-range">Perfect for smaller channels</div>
+                <ul class="price-features">
+                    <li>✅ Simple composition</li>
+                    <li>✅ Solid / gradient background</li>
+                    <li>✅ Styled title text</li>
+                    <li>✅ 1 revision included</li>
+                    <li>⏱️ ~48hr delivery</li>
+                </ul>
+                <a href="#contact" class="price-cta price-cta-outline">Get Started</a>
+            </div>
+            <!-- Standard (featured) -->
+            <div class="price-card featured">
+                <div class="recommended-badge">⭐ Most Popular</div>
+                <span class="price-tier-emoji">🎨</span>
+                <div class="price-tier-name">Standard</div>
+                <div class="price-amount">$9 <span>– $10</span></div>
+                <div class="price-range">The sweet spot</div>
+                <ul class="price-features">
+                    <li>✅ Custom background scene</li>
+                    <li>✅ Your Minecraft skin rendered in</li>
+                    <li>✅ Premium text effects</li>
+                    <li>✅ 2 revisions included</li>
+                    <li>⏱️ ~48hr delivery</li>
+                </ul>
+                <a href="#contact" class="price-cta price-cta-filled">Commission Now</a>
+            </div>
+            <!-- Premium -->
+            <div class="price-card">
+                <span class="price-tier-emoji">👑</span>
+                <div class="price-tier-name">Premium</div>
+                <div class="price-amount">$15 <span>– $16</span></div>
+                <div class="price-range">For creators who want it all</div>
+                <ul class="price-features">
+                    <li>✅ Cinematic composition</li>
+                    <li>✅ Up to 2 character renders</li>
+                    <li>✅ Advanced lighting & FX</li>
+                    <li>✅ 3 revisions + priority queue</li>
+                    <li>⏱️ ~36hr delivery</li>
+                </ul>
+                <a href="#contact" class="price-cta price-cta-outline">Go Premium</a>
+            </div>
+        </div>
+
+        <!-- Add-ons -->
+        <div class="addons-section">
+            <div class="addons-title">🧩 Add-Ons</div>
+            <div class="addons-grid">
+                <div class="addon-item">
+                    <span class="addon-emoji">🔁</span>
+                    <div class="addon-name">Extra Revision</div>
+                    <div class="addon-price">+$1</div>
+                </div>
+                <div class="addon-item">
+                    <span class="addon-emoji">⚡</span>
+                    <div class="addon-name">Rush Delivery (24hr)</div>
+                    <div class="addon-price">+$3</div>
+                </div>
+                <div class="addon-item">
+                    <span class="addon-emoji">🧑‍🤝‍🧑</span>
+                    <div class="addon-name">Extra Character / Skin</div>
+                    <div class="addon-price">+$2</div>
+                </div>
+                <div class="addon-item">
+                    <span class="addon-emoji">📁</span>
+                    <div class="addon-name">Source File Included</div>
+                    <div class="addon-price">+$2</div>
+                </div>
+            </div>
+            <div class="refund-notice">
+                <span class="ri">🛡️</span>
+                <span>Not satisfied with the final result? You're entitled to a <strong>50% refund</strong> — I keep the other half to cover time and asset costs. Your trust matters to me.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section id="testimonials">
+    <div class="container">
+        <p class="section-label">Kind Words</p>
+        <h2 class="section-title">What Clients Say 💬</h2>
+        <p class="section-sub">Real feedback from real creators. Building trust one thumbnail at a time.</p>
+        <div class="testimonials-grid">
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">"SLCMEX14 absolutely nailed my thumbnail. The colors, the composition — it looked way more professional than anything I was making myself. Will 100% commission again."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">🧱</div>
+                    <div>
+                        <div class="testi-name">CreeperKing_YT</div>
+                        <div class="testi-handle">Minecraft SMP Creator</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">"Super affordable and delivered faster than expected! The thumbnail got way more clicks than usual. Communication was smooth the whole way through."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">⚔️</div>
+                    <div>
+                        <div class="testi-name">HardcoreHarvey</div>
+                        <div class="testi-handle">Hardcore Challenge Creator</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="testi-stars">★★★★★</div>
+                <p class="testi-quote">"I was skeptical because of the low price but WOW. This guy is genuinely undercharging. The quality blew me away and he was super easy to work with."</p>
+                <div class="testi-author">
+                    <div class="testi-avatar">🌿</div>
+                    <div>
+                        <div class="testi-name">PixelFarmMC</div>
+                        <div class="testi-handle">Building & Survival Creator</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+    <div class="container">
+        <div class="about-inner">
+            <div class="about-card">
+                <div class="about-avatar">🤡</div>
+                <div class="about-name">SLCMEX14</div>
+                <div class="about-role">Minecraft Thumbnail Artist</div>
+                <div class="about-socials">
+                    <a href="https://discord.com/users/slcmex14" target="_blank" class="social-btn">💬 slcmex14</a>
+                    <a href="#" class="social-btn">🎮 MC Community</a>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Hey, I'm SLCMEX14 👋</h3>
+                <p>
+                    I'm a Minecraft community artist who's been crafting high-quality thumbnails for a while now.
+                    I love the game, I love design, and I love helping creators grow — so commissions just made perfect sense.
+                </p>
+                <p>
+                    My style blends bold visuals, punchy color, and that click-worthy energy that makes viewers
+                    stop mid-scroll. I'm silly, I'm a clown (literally my whole aesthetic 🤡), and I bring that playful
+                    personality into everything I make — while staying professional and delivering on time.
+                </p>
+                <p>
+                    I'm building this on <strong>trust and communication</strong> first. No ghosting, no vague deliverables.
+                    Just clean work, honest pricing, and a creator who genuinely cares about your channel growing.
+                </p>
+                <div class="about-tags">
+                    <span class="about-tag">🎮 MC Community</span>
+                    <span class="about-tag">🎨 Digital Art</span>
+                    <span class="about-tag">⚡ Fast Delivery</span>
+                    <span class="about-tag">🤡 Clown Energy</span>
+                    <span class="about-tag">🛡️ Trustworthy</span>
+                    <span class="about-tag">💬 Open Comms</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq">
+    <div class="container">
+        <p class="section-label" style="text-align:center;">Questions</p>
+        <h2 class="section-title" style="text-align:center;">Frequently Asked ❓</h2>
+        <p class="section-sub" style="margin: 0 auto 56px; text-align:center;">Got questions? I got answers. If something isn't covered here, just drop it in the commission form!</p>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How long does a commission take? <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Most thumbnails are delivered within 48 hours of confirming all the details. Premium tier orders get priority and typically arrive around 36 hours. Need it faster? Grab the Rush Delivery add-on (+$3)!</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What format will I receive? <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">All thumbnails are delivered as high-resolution PNG files (1280×720 or 2560×1440), ready to upload directly to YouTube. Want the editable source file? Add it on for +$2.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What's your refund policy? <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">If you're genuinely not happy with the final result after revisions, you're entitled to a 50% refund. I keep the other half to cover my time and the assets used. Fair for both sides. 🛡️</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    What do you need from me to start? <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Fill out the commission form with your channel name, video idea, preferred style/vibe, and your Minecraft skin file (or IGN so I can look it up). The more info you give me, the better I can nail your vision!</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    How do I pay? <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">After we confirm all the details, I'll send you a payment link. I accept PayPal and other methods — we'll figure out what works best when we chat. Payment is typically required before I start work.</div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Can I use the thumbnail on YouTube / commercially? <span class="faq-chevron">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Absolutely! Once delivered and paid for, the thumbnail is yours to use on your YouTube channel, social media, or anywhere you promote your content. Go off! 🎉</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+    <div class="container">
+        <p class="section-label">Commission</p>
+        <h2 class="section-title">Let's Make Something 🚀</h2>
+        <div class="contact-inner">
+            <div class="contact-info">
+                <h3>Ready to level up your thumbnails?</h3>
+                <p>Fill out the form and I'll get back to you ASAP — usually within a few hours. Let's make your next video impossible to scroll past. 🤡</p>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">⚡</div>
+                        Avg. response within a few hours
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">🛡️</div>
+                        50% refund if you're not satisfied
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">💬</div>
+                        Open & honest communication
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon">🎨</div>
+                        Starting at just $4
+                    </div>
+                </div>
+            </div>
+            <div class="commission-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name / Handle</label>
+                        <input type="text" class="form-input" placeholder="e.g. CreeperKing_YT">
+                    </div>
+                    <div class="form-group">
+                        <label>YouTube Channel URL</label>
+                        <input type="text" class="form-input" placeholder="youtube.com/@yourchannel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Video Idea / Title</label>
+                    <input type="text" class="form-input" placeholder="e.g. 100 Days Hardcore Minecraft...">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Commission Tier</label>
+                        <select class="form-input">
+                            <option value="Basic">🎈 Basic ($4–$5)</option>
+                            <option value="Standard" selected>🎨 Standard ($9–$10)</option>
+                            <option value="Premium">👑 Premium ($15–$16)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Deadline</label>
+                        <input type="text" class="form-input" placeholder="e.g. 3 days, ASAP, flexible...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Vibe / Style Notes</label>
+                    <textarea class="form-input" placeholder="Describe the mood, colors, references, your skin IGN, or anything else that helps me nail your vision..."></textarea>
+                </div>
+                <button class="submit-btn" onclick="handleSubmit()">Send Commission Request 🤡</button>
+                <p id="form-error" style="display:none;color:#FF3B30;font-size:.82rem;font-weight:700;margin-top:10px;text-align:center;"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-logo">🤡 SLCMEX14</div>
+        <div class="footer-sub">Minecraft Thumbnail Commissions · Built with 🎨 and clown energy · © 2025</div>
+    </div>
+</footer>
+
+<script>
+    function toggleFaq(btn) {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    }
+
+    const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSemJ7DgAsXnZYsMAGw4lWfpYVIcJtXGuA5xY2TUB6C1k8YoHw/formResponse";
+    const ENTRY_IDS = {
+        name:     "entry.856246883",
+        channel:  "entry.1625768865",
+        video:    "entry.237667107",
+        tier:     "entry.497432107",
+        deadline: "entry.1367251046",
+        notes:    "entry.388674092"
+    };
+
+    async function handleSubmit() {
+        const btn   = document.querySelector('.submit-btn');
+        const errEl = document.getElementById('form-error');
+
+        const inputs  = document.querySelectorAll('.commission-form .form-input');
+        const name     = inputs[0].value.trim();
+        const channel  = inputs[1].value.trim();
+        const video    = inputs[2].value.trim();
+        const tier     = inputs[3].value.trim();
+        const deadline = inputs[4].value.trim();
+        const notes    = inputs[5].value.trim();
+
+        errEl.style.display = 'none';
+        if (!name || !channel || !video || !deadline) {
+            errEl.textContent = '⚠️ Please fill in all required fields!';
+            errEl.style.display = 'block';
+            return;
+        }
+
+        btn.textContent = 'Sending... 🤡';
+        btn.disabled = true;
+
+        const body = new URLSearchParams();
+        body.append(ENTRY_IDS.name,     name);
+        body.append(ENTRY_IDS.channel,  channel);
+        body.append(ENTRY_IDS.video,    video);
+        body.append(ENTRY_IDS.tier,     tier);
+        body.append(ENTRY_IDS.deadline, deadline);
+        body.append(ENTRY_IDS.notes,    notes);
+
+        try {
+            await fetch(FORM_ACTION, { method: "POST", mode: "no-cors", body, headers: { "Content-Type": "application/x-www-form-urlencoded" } });
+
+            btn.textContent      = "Sent! I'll be in touch soon 🎉";
+            btn.style.background = 'linear-gradient(135deg, #32D74B, #30D158)';
+            btn.style.boxShadow  = '0 6px 22px rgba(50,215,75,.35)';
+
+            document.querySelectorAll('.commission-form .form-input').forEach(el => el.value = '');
+
+            setTimeout(() => {
+                btn.textContent      = 'Send Commission Request 🤡';
+                btn.style.background = '';
+                btn.style.boxShadow  = '';
+                btn.disabled         = false;
+            }, 4000);
+
+        } catch (err) {
+            btn.textContent = 'Send Commission Request 🤡';
+            btn.disabled    = false;
+            errEl.textContent   = '⚠️ Something went wrong — please try again!';
+            errEl.style.display = 'block';
+        }
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+</body>
+</html>
